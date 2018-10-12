@@ -1,0 +1,22 @@
+version: '2.1'
+
+services:
+  api:
+    image: node:10.11.0
+    container_name: node-api
+    working_dir: /api
+    volumes:
+      - ./:/api
+    environment:
+      NODE_PORT: 3000
+    ports:
+      - 3000:3000
+    tty: true
+  mongo:
+    image: mongo
+    container_name: mongo-api
+    hostname: mongo
+    volumes:
+      - ~/Projects/mongo-data:/data/db
+    ports:
+      - 27017:27017
